@@ -1,0 +1,23 @@
+# Mac crap
+.DS_Store
+
+# intellij
+.idea
+*.iml
+*.ipr
+*.iws
+
+# eclipse
+.settings
+.project
+.classpath
+target
+
+out
+javadocs
+build
+classes
+.gradle
+
+# configuration
+local.properties
