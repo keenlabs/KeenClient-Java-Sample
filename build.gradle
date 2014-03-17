@@ -38,3 +38,7 @@ run {
         args project.args.split('\\s+')
     }
 }
+
+jar {
+    manifest { attributes 'Main-Class': mainClassName }
+}
