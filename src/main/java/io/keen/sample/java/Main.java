@@ -158,8 +158,8 @@ public class Main {
                 "with the following curl command:");
         KeenProject defaultProject = client.getDefaultProject();
         System.out.printf("  curl \"https://api.keen.io/3.0/projects/%s/queries/sum?" +
-                "api_key=%s&event_collection=sample-app&target_property=counter\"",
-                defaultProject.getProjectId(), defaultProject.getWriteKey());
+                "api_key=<read key>&event_collection=sample-app&target_property=counter\"",
+                defaultProject.getProjectId());
     }
 
     public void setDefaultProject(Properties properties) {
