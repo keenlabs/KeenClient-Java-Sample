@@ -24,7 +24,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import io.keen.client.java.JavaKeenClient;
+import io.keen.client.java.JavaKeenClientBuilder;
 import io.keen.client.java.KeenClient;
 import io.keen.client.java.KeenLogging;
 import io.keen.client.java.KeenProject;
@@ -55,8 +55,8 @@ public class Main {
             System.exit(0);
         }
 
-        // Initialize the Java Keen client.
-        KeenClient client = JavaKeenClient.initialize();
+        // Build a Java Keen client.
+        KeenClient client = new JavaKeenClientBuilder().build();
 
         // If logging was specified, enable it.
         if (cmd.hasOption("logging")) {
@@ -149,7 +149,9 @@ public class Main {
                 "ExecutorService");
 
         // Shutdown the publish executor service for the Keen client.
-        ((JavaKeenClient) client).shutdownPublishExecutorService(60 * 1000);
+        ExecutorService service = (ExecutorService) client.getPublishExecutor();
+        service.shutdown();
+        service.awaitTermination(30, TimeUnit.SECONDS);
 
         // Print the expected sum of the "counter" column, which can be used to validate that the
         // Keen server received all of the events.
