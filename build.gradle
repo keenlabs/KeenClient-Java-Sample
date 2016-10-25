@@ -18,8 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile 'io.keen:keen-client-api-java:5.0.0'
-    compile 'io.keen:keen-client-java-core:5.0.0'
+    compile 'io.keen:keen-client-api-java:5.0.1'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.0'
     compile 'commons-cli:commons-cli:1.2'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
