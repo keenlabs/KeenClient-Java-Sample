@@ -155,13 +155,28 @@ public class Main {
 
         // Print the expected sum of the "counter" column, which can be used to validate that the
         // Keen server received all of the events.
-        System.out.println("Expected sum of counters: " + getExpectedSum());
+        System.out.println("Expected sum of counters (if first run): " + getExpectedSum());
         System.out.println("You can verify this sum via the web workbench, or " +
-                "with the following curl command:");
+                "with a curl command like this template:"); 
+        
+        System.out.println("  curl \"https://api.keen.io/3.0/projects/<project id>/queries/sum?" +
+                "api_key=<read key>&event_collection=sample-app&target_property=counter&" + 
+                "timeframe=<desired timeframe>\"");
+                
+        System.out.println("\nFor your project, if you've set the necessary system properties, " +
+                "this should work:");
+        
         KeenProject defaultProject = client.getDefaultProject();
+        String projectId = defaultProject.getProjectId(); // Had to be provided to record events.
+        String readKey = defaultProject.getReadKey();
+        readKey = (null == readKey ? "<read key missing>" : readKey);
+        
+        
         System.out.printf("  curl \"https://api.keen.io/3.0/projects/%s/queries/sum?" +
-                "api_key=<read key>&event_collection=sample-app&target_property=counter\"",
-                defaultProject.getProjectId());
+                "api_key=%s&event_collection=sample-app&target_property=counter&" +
+                "timeframe=this_hour\"",
+                projectId,
+                readKey);
     }
 
     public void setDefaultProject(Properties properties) {
