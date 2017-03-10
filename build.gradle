@@ -1,6 +1,6 @@
 // Define wrapper task.
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.14.1'
+    gradleVersion = '3.4.1'
 }
 
 // Apply plugins.
@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile 'io.keen:keen-client-api-java:5.0.1'
+    compile 'io.keen:keen-client-api-java:5.1.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.0'
     compile 'commons-cli:commons-cli:1.2'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
