@@ -57,6 +57,7 @@ public class Main {
 
         // Build a Java Keen client.
         KeenClient client = new JavaKeenClientBuilder().build();
+        client.setBaseUrl("https://staging-api.keen.io");
 
         // If logging was specified, enable it.
         if (cmd.hasOption("logging")) {
@@ -64,9 +65,9 @@ public class Main {
         }
 
         // If debug mode was specified, enable it.
-        if (cmd.hasOption("debug")) {
+//        if (cmd.hasOption("debug")) {
             client.setDebugMode(true);
-        }
+//        }
 
         // Get the number of events to send from the arguments, or use the default.
         int numEvents = DEFAULT_NUM_EVENTS;
@@ -180,9 +181,9 @@ public class Main {
     }
 
     public void setDefaultProject(Properties properties) {
-        String projectId = properties.getProperty("io.keen.project.id");
-        String writeKey = properties.getProperty("io.keen.project.write_key");
-        String readKey = properties.getProperty("io.keen.project.read_key");
+        String projectId = "5b5ae79046e0fb000162c190";
+        String writeKey = "74B4DDA439462EC263F7C951D1CC2AC3B3C7B70BC839E993F65B72C461FAC866DA455C242664B4D64516C5720191F3276C33CAB4DBDD8DB33EB01B642E030E14BB4D4087EBE1DF4B5D4960C6AA8AD45329887174E26F61B384E5D3EA1691C819";
+        String readKey = "76AD455FC1F590D113C8FBAD8F845DCD659085CDB65ADC26CA364FC1804A057154D4B21E849F8EA3381AFC8DCA33C14F3FB968B977E2CEABB99A6CF69D90703F680C336D0806058454658887D21746B6011EE1C459733C419ED1097DE70B015B";
         KeenProject project = new KeenProject(projectId, writeKey, readKey);
         client.setDefaultProject(project);
     }
@@ -207,7 +208,7 @@ public class Main {
 
     ///// PRIVATE CONSTANTS /////
 
-    private static final String COLLECTION_NAME = "sample-app";
+    private static final String COLLECTION_NAME = " H";
     private static final int DEFAULT_BATCH_SIZE = 10;
     private static final int DEFAULT_NUM_EVENTS = 5;
     private static final int DEFAULT_NUM_THREADS = 1;
