@@ -36,8 +36,6 @@ import io.keen.client.java.KeenProject;
  */
 public class Main {
 
-    ///// PUBLIC STATIC METHODS /////
-
     /**
      * Executes the application with the given arguments.
      *
@@ -94,9 +92,7 @@ public class Main {
         main.execute();
     }
 
-    ///// PUBLIC METHODS //////
-
-    public void execute() throws InterruptedException {
+    private void execute() throws InterruptedException {
         // Print out the parameters of this execution.
         System.out.printf(
                 Locale.US, "Sending %d events from %d threads using %s requests and %sbatching\n",
@@ -179,7 +175,7 @@ public class Main {
                 readKey);
     }
 
-    public void setDefaultProject(Properties properties) {
+    private void setDefaultProject(Properties properties) {
         String projectId = properties.getProperty("io.keen.project.id");
         String writeKey = properties.getProperty("io.keen.project.write_key");
         String readKey = properties.getProperty("io.keen.project.read_key");
